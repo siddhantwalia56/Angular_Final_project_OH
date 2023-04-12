@@ -9,12 +9,15 @@ export class LoginService {
 //  baseUrl='https//dummyjson.com';
   constructor(private router: Router, private http: HttpClient ) { }
   userid:any
-  login(user: any,password:any):Observable<any>{
-    console.log(user)
+  login(username: string,password:string){
+    console.log(username)
     console.log(password)
-    const body= JSON.stringify({user,password})
-    return this.http.post<any>('https://dummyjson.com/auth/login',body)
-      }
+    const url ='https://dummyjson.com/auth/login'
+    const body= {username,password}
+     return this.http.post(url,body)
+
+     }
+
 
 
 

@@ -12,14 +12,20 @@ import { Router } from '@angular/router';
 export class TodoListComponent implements OnInit {
 constructor(public service: TodoService, private login_service: LoginService, private router:Router){}
 list:any
+status:string=''
+todo_list:any[]=[]
  ngOnInit(){
-  // if(this.login_service.userid)
-  // this.service.todo(this.login_service.userid);
-  // else
-  // {
-
-  // this.router.navigateByUrl('')
-  // alert('Please login first')
-  // }
+  if(this.login_service.userid)
+  {
+  this.service.todo(this.login_service.userid).subscribe((response)=>{
+    console.log(response)
+    this.todo_list=response.todos
+  })
+  }
+  else
+  {
+  this.router.navigateByUrl('')
+  alert('Please login first')
+  }
  }
 }

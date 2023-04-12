@@ -1,1 +1,11 @@
-<p *ngFor="let list of this.service.todo_data">{{list.todo}}</p>
+
+<!-- <p *ngFor="let list of this.todo_list">{{list.completed}}</p> -->
+<div class="flex justify-center">
+
+  <div class="felx justify-center" *ngFor="let list of this.todo_list">
+      <p *ngIf="list.completed ;else templateName"
+      >{{list.todo}} completed</p>
+      <ng-template #templateName>{{list.todo}} pending</ng-template>
+  </div>
+
+</div>

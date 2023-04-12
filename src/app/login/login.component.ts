@@ -14,37 +14,41 @@ loginForm= new FormGroup({
   user: new FormControl(''),
   password: new FormControl(''),
 })
+username: any ;
+password: any ;
 
 apiData:any
 errorMessage:any
 loginform(){
-  console.log(this.loginForm.value.user)
-  this.login_service.login(this.loginForm.value.user,this.loginForm.value.password)
-  .pipe(
-    tap(
-      (response) => {
-        this.apiData = response;
-        console.log(this.apiData);
-        if (this.apiData) {
-          this.errorMessage = false;
-          this.router.navigateByUrl('todo')
-        }
-      },
-      (error) => {
-        this.errorMessage = true;
-        setTimeout(() => {
-          this.errorMessage = false;
-        }, 3000);
-        this.loginForm.reset();
-
-      }
-    )
-  )
-  .subscribe();
+  // console.log(this.loginForm.value.user)
   // this.login_service.login(this.loginForm.value.user,this.loginForm.value.password)
-  // .subscribe((response:any)=>{
-  //   console.log(response)
-  //})
+  // .pipe(
+  //   tap(
+  //     (response) => {
+  //       this.apiData = response;
+  //       console.log(this.apiData);
+  //       if (this.apiData) {
+  //         this.errorMessage = false;
+  //         this.router.navigateByUrl('todo')
+  //       }
+  //     },
+  //     (error) => {
+  //       this.errorMessage = true;
+  //       setTimeout(() => {
+  //         this.errorMessage = false;
+  //       }, 3000);
+  //       this.loginForm.reset();
+
+  //     }
+  //   )
+  // )
+  // .subscribe();
+  this.login_service.login(this.username,this.password)
+  .subscribe((response:any)=>{
+    console.log(response)
+    this.login_service.userid=response.id
+    this.router.navigateByUrl('todo')
+  })
 
 // this.router.navigateByUrl('todo')
 }
