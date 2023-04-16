@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-//  baseUrl='https//dummyjson.com';
+
   constructor(private router: Router, private http: HttpClient ) { }
   userid:any
   login(username: string,password:string){

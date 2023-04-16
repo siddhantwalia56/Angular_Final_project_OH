@@ -1,0 +1,36 @@
+.task{
+  padding-right: 2%;
+}
+span{
+  width: 45%;
+}
+
+.delete-task{
+  position: relative;
+  left: 44%;
+}
+
+.edit-task{
+  position: relative;
+  left: 33%;
+}
+
+.status{
+  width: 7%;
+}
+
+.status_completed{
+  color : #fff;
+  background-color: green;
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 5px;
+}
+
+.status_pending{
+  color : #fff;
+  background-color: yellow;
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 5px;
+}

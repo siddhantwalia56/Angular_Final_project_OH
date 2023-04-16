@@ -9,14 +9,14 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditTaskComponent } from './todo-list/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LogoutComponent,
-    TodoListComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,

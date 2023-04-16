@@ -4,16 +4,23 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { LogoutComponent } from './logout/logout.component';
 import { LoginComponent } from './login/login.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { EditTaskComponent } from './todo-list/edit-task/edit-task.component';
 
 const routes: Routes = [
+  // {
+  //   path:'todo', component:TodoListComponent,children:[
+  //       {path:'edit', component: EditTaskComponent}
+  //   ]
+  // },
   {
-    path:'todo', component:TodoListComponent
+    path: 'todo',
+    loadChildren: () => import('./todo-list/todo-list.module').then(x => x.TodoListModule, )
   },
   {
     path: 'logout', component:LogoutComponent
   },
   {path:'', component:LoginComponent},
-  {path:'**', component:PagenotfoundComponent}
+  {path:'**', component:PagenotfoundComponent},
 ];
 
 @NgModule({
