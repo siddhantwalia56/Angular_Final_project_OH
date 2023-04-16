@@ -16,14 +16,15 @@ status:any='all'
 new_task:any
 
 parent:any
+list_of_tasks:any[]=[]
  ngOnInit(){
   if(this.login_service.userid)
   {
-
   this.todo_service.todo(this.login_service.userid).subscribe((response)=>{
     // this.todo_service.todo(7).subscribe((response)=>{
     console.log(response)
     this.todo_service.todo_list=response.todos
+    this.list_of_tasks=this.todo_service.todo_list
   })
   }
 
@@ -46,12 +47,14 @@ parent:any
   this.todo_service.task_add(this.new_task).subscribe((response)=>{
     this.todo_service.todo_list.push(response)
   })
+  this.new_task=''
  }
  all(){
   this.status='all'
  }
  completed(){
   this.status=true
+  console.log(this.todo_service.todo_list)
  }
  pending(){
   this.status=false

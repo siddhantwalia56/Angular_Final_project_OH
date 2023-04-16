@@ -5,23 +5,25 @@
   </div>
 <router-outlet></router-outlet>
 <div *ngIf="parent">
-  <div class="flex flex-row px-64 mt-12">
+  <div class="flex flex-row px-64 mt-12 px-">
     <input class="w-10/12 mr-11 border border-sky-400 rounded pl-3" type="text" placeholder="Type a task" [(ngModel)]="new_task">
     <button class="bg-sky-400 px-4 py-1 rounded-xl" (click)="Add_task()">Add task</button>
   </div >
-  <div class="button-group">
-    <button (click)="all()">All</button>
-    <button (click)="completed()">Completed</button>
-    <button (click)="pending()">Pending</button>
+  <div class="button-group flex justify-center mr-40 my-6">
+    <button (click)="all()" class="rounded-l-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-9 py-1">All</button>
+    <button (click)="completed()" class="bg-gradient-to-r from-green-300 to-green-500 px-5 py-1">Completed</button>
+    <button (click)="pending()" class="rounded-r-lg bg-gradient-to-r from-yellow-300 to-yellow-500 px-5 py-1">Pending</button>
   </div>
-  <div  >
-  <div
 
+  <div
+  class="flex flex-col items-center  ml-80 w-7/12 "
   *ngFor="let list of this.todo_service.todo_list; let i=index"
   (dblclick)="edit_task(i)">
-  <div style="display: flex; width: 51.9%;" *ngIf="status==='all' || status===list.completed">
+  <div class="w-11/12 flex mb-4 bg-sky-100 py-2 px-2 rounded-full shadow-xl shadow-gray-200" *ngIf="status==='all' || list.completed==status">
     <span  class="task text-lg" style="width: 86%;">{{list.todo}}</span>
-    <p class=""  [ngStyle]="{'color':list.completed ? 'green' : 'red' }">Task Completion Status: {{list.completed}} </p>
+    <p class="text-green-500 text-xl" *ngIf="list.completed; else pending">Completed </p>
+    <ng-template #pending>
+      <p class="text-yellow-500 text-xl">Pending</p></ng-template>
   </div>
   <!-- <ng-template #templateName>
     <span class="task text-lg">{{list.todo}}</span>
@@ -29,7 +31,6 @@
   </ng-template> -->
 </div>
 
-</div>
 
 </div>
 

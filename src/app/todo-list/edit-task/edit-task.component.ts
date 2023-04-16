@@ -19,15 +19,27 @@ constructor(public todo_service: TodoService, private router: Router, private to
 }
 Updated(){
   console.log(this.status)
+  if(this.status==='true')
+  {this.status=true}
+  else
+  {this.status=false}
   this.todo_service.edit_task(this.todo_service.todo_list[this.todo_service.todo_index].id,this.updated_task,this.status)
   .subscribe((response)=>{
     console.log(response)
     this.todo_service.todo_list[this.todo_service.todo_index]=response
+    // console.log(this.todo_service.todo_list[this.todo_service.todo_index])
+    console.log(this.todo_service.todo_list)
   })
   this.todo.parent=true;
   this.router.navigateByUrl('todo')
 }
 Cancel(){
+  this.todo.parent=true;
+  this.router.navigateByUrl('todo')
+}
+
+Delete(){
+  this.todo_service.todo_list.splice(this.todo_service.todo_index,1)
   this.todo.parent=true;
   this.router.navigateByUrl('todo')
 }
