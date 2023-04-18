@@ -1,33 +1,50 @@
-  <button class="absolute right-2 top-4 py-1 rounded-full px-5 bg-red-400"
-   (click)="logout()">Logout</button>
+<button class="absolute right-2 top-3 py-1 rounded-full px-5 text-white bg-red-400" (click)="logout()">Logout</button>
+
+<!-- user info -->
+<img src={{login_service.user.image}} alt="no image"
+  class="absolute right-6 top-2 py-1 w-10 h-10 mr-24 bg-amber-50 rounded-full cursor-pointer" (click)="user_detail()">
+<div *ngIf="show_user_detail"
+  class="absolute right-2 w-64 h-60 pl-4 bg-sky-100 rounded-lg shadow-xl border border-sky-400 scale-95">
+  <img src={{login_service.user.image}} alt="" class="w-20 ml-20 mb-4">
+  <p class="mb-1">First Name: {{login_service.user.firstName}}</p>
+  <p class="mb-1">Last Name: {{login_service.user.lastName}}</p>
+  <p class="mb-1">Username: {{login_service.user.username}}</p>
+  <p class="mb-1">Email: {{login_service.user.email}}</p>
+  <p class="mb-1">Gender: {{this.login_service.user.gender}}</p>
+</div>
+
 <router-outlet></router-outlet>
+
 <div *ngIf="parent">
+
+  <!-- Add new task -->
   <div class="flex flex-row px-64 mt-12 px-">
-    <input class="w-10/12 mr-11 border border-sky-400 rounded pl-3" type="text" placeholder="Type a task" [(ngModel)]="new_task">
-    <button class="bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-1 rounded-full" [disabled]="!new_task" (click)="Add_task()">Add task</button>
-  </div >
+    <input class="w-10/12 mr-11 border border-sky-400 rounded pl-3" type="text"
+      placeholder="Type a task" [(ngModel)]="new_task">
+    <button class="bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-1 rounded-full text-white" [disabled]="!new_task"
+      (click)="Add_task()">Add task</button>
+  </div>
+
+  <!-- three grouped button (filter) -->
   <div class="button-group flex justify-center mr-40 my-6">
-    <button (click)="all()" class="rounded-l-full bg-gradient-to-r from-cyan-500 to-blue-500 px-9 py-1">All</button>
-    <button (click)="completed()" class="bg-gradient-to-r from-green-300 to-green-500 px-5 py-1">Completed</button>
-    <button (click)="pending()" class="rounded-r-full bg-gradient-to-r from-yellow-300 to-yellow-500 px-5 py-1">Pending</button>
+    <button (click)="all()" [ngStyle]="{'background':status === 'all' ? 'linear-gradient(to right, #01CBE2, #017DDC)' : 'grey' }" class="rounded-l-full px-9 py-1 text-white">All</button>
+    <button (click)="completed()" [ngStyle]="{'background':status == true ? 'linear-gradient(to right, #01CBE2, #017DDC)' : 'grey' }" class=" px-5 py-1 text-white">Completed</button>
+    <button (click)="pending()" [ngStyle]="{'background':status == false ? 'linear-gradient(to right, #01CBE2, #017DDC)' : 'grey' }"
+      class="rounded-r-full px-5 py-1 text-white">Pending</button>
   </div>
 
-  <div
-  class="flex flex-col items-center  ml-80 w-7/12 "
-  *ngFor="let list of this.todo_service.todo_list; let i=index"
-  (dblclick)="edit_task(i)">
-  <div class="w-11/12 flex mb-4 bg-sky-100 py-2 px-2 rounded-full shadow-xl shadow-gray-200" *ngIf="status==='all' || list.completed==status">
-    <span  class="task text-lg" style="width: 86%;">{{list.todo}}</span>
-    <p class="text-green-500 text-xl" *ngIf="list.completed; else pending">Completed </p>
-    <ng-template #pending>
-      <p class="text-yellow-500 text-xl">Pending</p></ng-template>
+  <!-- todo list -->
+  <div class="flex flex-col items-center  ml-80 w-7/12 " *ngFor="let list of this.todo_service.todo_list; let i=index"
+    (dblclick)="edit_task(i)">
+    <div class="w-11/12 flex mb-4 cursor-pointer py-2 px-2 rounded-full shadow-xl backdrop-blur-lg border-gray-100 border bg-black/20"
+      *ngIf="status==='all' || list.completed==status">
+      <span class="task text-lg text-white pl-4" style="width: 86%;">{{list.todo}}</span>
+      <p class="text-green-500 text-xl" *ngIf="list.completed; else pending">Completed </p>
+      <ng-template #pending>
+        <p class="text-yellow-500 text-xl">Pending</p>
+      </ng-template>
+    </div>
   </div>
-  <!-- <ng-template #templateName>
-    <span class="task text-lg">{{list.todo}}</span>
-    <p class="text-yellow-500 font-bold text-lg status">Pending</p>
-  </ng-template> -->
-</div>
 
 
 </div>
-

@@ -12,9 +12,10 @@ import { Location } from '@angular/common';
 })
 export class EditTaskComponent {
   updated_task:string=''
-  status:any
+  status:any=false
 constructor(public todo_service: TodoService, private router: Router, private todo: TodoListComponent){
   this.todo.parent=false;
+  this.updated_task=todo_service.todo_list[todo_service.todo_index].todo
   // console.log(todo_service.todo_list[this.todo_service.todo_index].id)
 }
 Updated(){

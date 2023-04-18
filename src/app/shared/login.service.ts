@@ -9,6 +9,7 @@ export class LoginService {
 
   constructor(private router: Router, private http: HttpClient ) { }
   userid:any
+  user:any
   login(username: string,password:string){
     console.log(username)
     console.log(password)

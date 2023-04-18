@@ -14,13 +14,13 @@ todo_data:any
   todo(id:any):Observable<any>{
     return this.http.get('https://dummyjson.com/todos/user/'+id)
    }
-   edit_task(userid:number,updated_task:any,status:any){
+   edit_task(taskid:number,updated_task:any,status:any){
     console.log(status)
     const body={
       todo:updated_task,
       completed:status
     }
-    return this.http.put('https://dummyjson.com/todos/'+userid,body)
+    return this.http.put('https://dummyjson.com/todos/'+taskid,body)
    }
 
    task_add(new_task:any){

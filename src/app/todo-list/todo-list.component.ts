@@ -14,9 +14,10 @@ constructor(public todo_service: TodoService, public login_service: LoginService
 list:any
 status:any='all'
 new_task:any
-
+show_user_detail=false
 parent:any
 list_of_tasks:any[]=[]
+
  ngOnInit(){
   if(this.login_service.userid)
   {
@@ -34,21 +35,26 @@ list_of_tasks:any[]=[]
   alert('Please login first')
   }
  }
+
  edit_task(index:number){
     this.todo_service.todo_index=index
     // this.edit=true
     this.router.navigate(['edit'],{relativeTo: this.route})
  }
+
  logout(){
   this.router.navigate(['logout'])
   this.login_service.userid=''
  }
+
  Add_task(){
   this.todo_service.task_add(this.new_task).subscribe((response)=>{
     this.todo_service.todo_list.push(response)
+    console.log(response)
   })
   this.new_task=''
  }
+
  all(){
   this.status='all'
  }
@@ -56,7 +62,13 @@ list_of_tasks:any[]=[]
   this.status=true
   console.log(this.todo_service.todo_list)
  }
+
  pending(){
   this.status=false
+ }
+
+ user_detail(){
+  console.log(this.login_service.user)
+  this.show_user_detail=!this.show_user_detail
  }
 }
