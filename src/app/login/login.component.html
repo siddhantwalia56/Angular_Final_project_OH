@@ -1,17 +1,17 @@
 <form  (ngSubmit)="loginform()" >
   <div class="flex justify-center">
-    <div class=" py-28 px-72 mx-96 my-28 flex flex-col flex-1 space-y-4 justify-center backdrop-blur-lg border-gray-100 border bg-black/20
+    <div class=" py-28 px-72 mx-96 my-28 flex flex-col flex-1 space-y-4 justify-center backdrop-blur-lg border-gray-100 border bg-black/30
 rounded-2xl shadow-xl shadow-slate-400">
-      <h1 class="font-bold text-2xl text-center">Login</h1>
+      <h1 class="font-bold text-2xl text-center text-white">Login</h1>
       <br>
-      <div class="flex flex-col ... justify-center ...">
+      <div class="flex flex-col justify-center text-white">
         <p>Username</p>
-        <input class="border-2 rounded-md border-gray-950 px-1" [(ngModel)]="username" name="username" type="text" placeholder="Type your username"
+        <input class="rounded-md text-white backdrop-blur-lg border-gray-100 border bg-black/10 px-1" [(ngModel)]="username" name="username" type="text" placeholder="Type your username"
           >
       </div>
-      <div class="flex flex-col ... justify-center ...">
+      <div class="flex flex-col justify-center text-white">
         <p>Password</p>
-        <input class="border-2 rounded-md border-gray-950 px-1" [(ngModel)]="password" name="password" type="password" placeholder="Type your password">
+        <input class="rounded-md text-white backdrop-blur-lg border-gray-100 border bg-black/10 px-1" [(ngModel)]="password" name="password" type="password" placeholder="Type your password">
       </div>
       <br>
       <button class=" rounded-full text-white py-1 mx-10 bg-gradient-to-r from-green-600 to-green-300 ..." type="submit">Sign In</button>

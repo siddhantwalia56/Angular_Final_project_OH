@@ -1,19 +1,29 @@
 <div class="flex flex-col justify-center items-center mt-16 ">
-  <div class="current_task mb-12 w-2/5 bg-sky-100 shadow-xl p-12 rounded-2xl">
-    <p class="mb-12">Task: {{todo_service.todo_list[todo_service.todo_index].todo}}</p>
-    <p *ngIf="todo_service.todo_list[todo_service.todo_index].completed;else pending">Status: Completed</p>
-    <ng-template #pending>Status: Pending</ng-template>
+  <div class="current_task mb-12 w-2/5 backdrop-blur-lg border-gray-100 border bg-black/30 shadow-xl p-12 rounded-2xl">
+    <p class="mb-12 text-white text-xl">Task: {{todo_service.todo_list[todo_service.todo_index].todo}}</p>
+    <p class="text-white text-xl" *ngIf="todo_service.todo_list[todo_service.todo_index].completed;else pending">Status: Completed</p>
+    <ng-template  #pending>
+      <p class="text-white text-xl">
+        Status: Pending
+      </p>
+    </ng-template>
   </div>
-<form (ngSubmit)="Updated()" class="w-2/5 bg-sky-100 shadow-xl p-12 rounded-2xl">
+
+<form (ngSubmit)="Updated()" class="w-2/5 backdrop-blur-lg border-gray-100 border bg-black/30 shadow-xl p-12 rounded-2xl">
   <div class="updated task">
-    <label class="mb-12 mr-1">Update Task:</label>
-    <input class="mb-12 border border-sky-400 rounded pl-3" type="text" [(ngModel)]="updated_task" name="edited_task">
+    <div class="flex">
+      <p class=" text-xl mb-12 mr-1 text-white">Update Task: </p>
+      <input class=" text-white mb-12 backdrop-blur-lg border-gray-100 border bg-black/10 px-1 rounded w-4/5" type="text" [(ngModel)]="updated_task" name="edited_task">
+    </div>
 <br>
-    <label class="mb-12 mr-1 " >Update Status:</label>
-    <select class="mb-12 border border-sky-400 rounded" [(ngModel)]="status" name="status">
-      <option value="true">Completed</option>
-      <option value="false">Pending</option>
-    </select>
+
+<div class="flex">
+  <p class=" text-xl mb-12 mr-1 text-white" >Update Status:</p>
+  <select class=" mb-12 rounded text-white backdrop-blur-lg border-gray-100 border bg-black/10 px-1" [(ngModel)]="status" name="status">
+    <option class="text-black backdrop-blur-lg border-gray-100 border bg-black/10" value="true">Completed</option>
+    <option class="text-black backdrop-blur-lg border-gray-100 border bg-black/10" value="false">Pending</option>
+  </select>
+</div>
 <br>
     <button class="mr-12 bg-gradient-to-r from-green-600 to-green-300 px-4 py-1 rounded-full text-white" type="submit">Update</button>
     <button class="mr-12 bg-sky-400 px-4 py-1 rounded-full text-white" type="reset" (click)="Cancel()">Cancel</button>
