@@ -22,8 +22,6 @@ list_of_tasks:any[]=[]
   if(this.login_service.userid)
   {
   this.todo_service.todo(this.login_service.userid).subscribe((response)=>{
-    // this.todo_service.todo(7).subscribe((response)=>{
-    console.log(response)
     this.todo_service.todo_list=response.todos
     this.list_of_tasks=this.todo_service.todo_list
   })
@@ -38,7 +36,6 @@ list_of_tasks:any[]=[]
 
  edit_task(index:number){
     this.todo_service.todo_index=index
-    // this.edit=true
     this.router.navigate(['edit'],{relativeTo: this.route})
  }
 
@@ -50,7 +47,6 @@ list_of_tasks:any[]=[]
  Add_task(){
   this.todo_service.task_add(this.new_task).subscribe((response)=>{
     this.todo_service.todo_list.push(response)
-    console.log(response)
   })
   this.new_task=''
  }
@@ -60,7 +56,6 @@ list_of_tasks:any[]=[]
  }
  completed(){
   this.status=true
-  console.log(this.todo_service.todo_list)
  }
 
  pending(){
@@ -68,7 +63,6 @@ list_of_tasks:any[]=[]
  }
 
  user_detail(){
-  console.log(this.login_service.user)
   this.show_user_detail=!this.show_user_detail
  }
 }

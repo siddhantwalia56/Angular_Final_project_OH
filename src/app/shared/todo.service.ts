@@ -31,4 +31,8 @@ todo_data:any
     }
     return this.http.post('https://dummyjson.com/todos/add',body)
    }
+
+   delete_task(id: number){
+    return this.http.delete('https://dummyjson.com/todos/'+id)
+   }
 }

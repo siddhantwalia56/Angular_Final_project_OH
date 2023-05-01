@@ -28,7 +28,6 @@ apiData:any
 loginform(){
   this.login_service.login(this.username,this.password)
   .subscribe((response:any)=>{
-    console.log(response)
     this.login_service.user=response
     this.login_service.userid=response.id
     this.router.navigateByUrl('todo')

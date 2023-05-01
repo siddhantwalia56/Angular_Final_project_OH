@@ -4,7 +4,8 @@
 <img src={{login_service.user.image}} alt="no image"
   class="absolute right-6 top-2 py-1 w-10 h-10 mr-24 bg-amber-50 rounded-full cursor-pointer" (click)="user_detail()">
 <div *ngIf="show_user_detail"
-  class="absolute right-2 w-64 h-60 pl-4 bg-sky-100 rounded-lg shadow-xl border border-sky-400 scale-95">
+  class="absolute right-2 text-white w-64 h-60 pl-4 backdrop-blur-lg border-gray-100 border bg-black/30
+  rounded-2xl shadow-xl shadow-slate-400 ">
   <img src={{login_service.user.image}} alt="" class="w-20 ml-20 mb-4">
   <p class="mb-1">First Name: {{login_service.user.firstName}}</p>
   <p class="mb-1">Last Name: {{login_service.user.lastName}}</p>

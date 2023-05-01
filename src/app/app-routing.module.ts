@@ -7,11 +7,6 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { EditTaskComponent } from './todo-list/edit-task/edit-task.component';
 
 const routes: Routes = [
-  // {
-  //   path:'todo', component:TodoListComponent,children:[
-  //       {path:'edit', component: EditTaskComponent}
-  //   ]
-  // },
   {
     path: 'todo',
     loadChildren: () => import('./todo-list/todo-list.module').then(x => x.TodoListModule, )

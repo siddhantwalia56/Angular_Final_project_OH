@@ -1,21 +1,21 @@
 <form  (ngSubmit)="loginform()" >
   <div class="flex justify-center">
-    <div class=" py-28 px-72 mx-96 my-28 flex flex-col flex-1 space-y-4 justify-center backdrop-blur-lg border-gray-100 border bg-black/30
+    <div class=" items-center py-28 px-72 mx-96 my-28 flex flex-col flex-1 space-y-4 justify-center backdrop-blur-lg border-gray-100 border bg-black/30
 rounded-2xl shadow-xl shadow-slate-400">
       <h1 class="font-bold text-2xl text-center text-white">Login</h1>
       <br>
-      <div class="flex flex-col justify-center text-white">
+      <div class="flex flex-col justify-center text-white w-96">
         <p>Username</p>
         <input class="rounded-md text-white backdrop-blur-lg border-gray-100 border bg-black/10 px-1" [(ngModel)]="username" name="username" type="text" placeholder="Type your username"
           >
       </div>
-      <div class="flex flex-col justify-center text-white">
+      <div class="flex flex-col justify-center text-white w-96">
         <p>Password</p>
         <input class="rounded-md text-white backdrop-blur-lg border-gray-100 border bg-black/10 px-1" [(ngModel)]="password" name="password" type="password" placeholder="Type your password">
       </div>
       <br>
-      <button class=" rounded-full text-white py-1 mx-10 bg-gradient-to-r from-green-600 to-green-300 ..." type="submit">Sign In</button>
-      <p class="text-center w-96 ml-24 bg-red-500 text-white rounded-full">{{this.errorMessage}}</p>
+      <button class="w-80 rounded-full text-white py-1 mx-10 bg-gradient-to-r from-green-600 to-green-300 ..." type="submit">Sign In</button>
+      <p class="text-center w-80 bg-red-500 text-white rounded-full">{{this.errorMessage}}</p>
     </div>
   </div>
 </form>
